@@ -2,11 +2,14 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
+import { useCart } from './CartProvider';
 
 export default function TopNavBar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const pathname = usePathname();
+    const { itemCount, openCart } = useCart();
 
     const navLinks = [
         { name: 'Beranda', path: '/' },
@@ -19,9 +22,15 @@ export default function TopNavBar() {
     return (
         <header className="bg-surface-container-lowest/90 backdrop-blur-[10px] sticky top-0 w-full z-50 border-b border-outline-variant shadow-sm transition-all">
             <div className="max-w-container-max mx-auto px-gutter flex justify-between items-center h-[64px] md:h-[72px]">
-                <Link href="/" className="font-display text-headline-sm md:text-display-lg-mobile text-primary tracking-tight">
-                    jieun.keun
-                </Link>
+                <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
+    <Image
+        src="/logo-artisan.png" 
+        alt="Logo jieun.keun"
+        width={100}
+        height={80}
+        className="object-contain"
+    />
+</Link>
 
                 <nav className="hidden md:flex space-x-gutter">
                     {navLinks.map(link => (
@@ -40,8 +49,13 @@ export default function TopNavBar() {
                 </nav>
 
                 <div className="flex items-center gap-4">
-                    <button className="text-primary hover:opacity-80 transition-opacity">
-                        <span className="material-symbols-outlined text-[24px]">search</span>
+                    <button className="relative text-primary hover:opacity-80 transition-opacity" onClick={openCart}>
+                        <span className="material-symbols-outlined text-[24px]">shopping_cart</span>
+                        {itemCount > 0 && (
+                            <span className="absolute -right-2 -top-2 flex h-5 min-w-5 items-center justify-center rounded-full bg-primary px-1 text-[10px] font-semibold text-on-primary">
+                                {itemCount}
+                            </span>
+                        )}
                     </button>
                     <a href="https://wa.me/6285695997686" target="_blank" rel="noreferrer" className="bg-primary text-on-primary px-6 py-2 rounded-full font-label text-label-caps uppercase hover:opacity-80 transition-opacity hidden sm:inline-flex items-center gap-2">
                         WhatsApp

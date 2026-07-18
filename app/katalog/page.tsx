@@ -25,10 +25,6 @@ export default async function KatalogPage({ searchParams }: KatalogPageProps) {
           <h1 className="font-display text-display-lg-mobile text-on-surface">
             Pilihan Handmade
           </h1>
-          <p className="mt-2 max-w-xl font-body text-body-md text-on-surface-variant">
-            Produk dari Supabase akan muncul di sini setelah tabel dibuat dan
-            env diisi.
-          </p>
         </div>
         <Link
           href="/katalog"
@@ -54,6 +50,7 @@ export default async function KatalogPage({ searchParams }: KatalogPageProps) {
         {products.map((product) => (
           <ProductCard
             key={product.name}
+            id={product.name}
             name={product.name}
             price={product.price}
             tag={product.tag}

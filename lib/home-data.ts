@@ -17,7 +17,7 @@ export const hero = {
   title: "Keindahan DIY yang Elegan.",
   description: "Koleksi unik material alami dengan presisi desain modern.",
   image:
-    "https://lh3.googleusercontent.com/aida/AP1WRLtlDWbgfbMgTTqpjJ9dIPQ3G-FpLrgpQ1i8iIuo-9WUAYcgjvBDomQlirS1pcO25deKezCZVbTwm-HM-NmKp6Oy_oFs1-hYnYAe6C5KMWv2zvbAVezHcJrG3YS5BFSoGofmjmFAdVks6wQYKRQdj46bmB9ZGINVU2iak-1NKPhIwi_C01uh6QzBqHiYmC3Kwko0uahJjAjp8gRaz_SwoMF67UYHUeEWGD3SYgEku73aBxhi65FPj4nEUvEf",
+    "https://i.pinimg.com/1200x/0c/b9/e8/0cb9e88bc66ca1591e8533b9eb0152a4.jpg",
 };
 
 export const categories: Category[] = [

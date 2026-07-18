@@ -1,6 +1,10 @@
+"use client";
+
 import Image from "next/image";
+import { useCart } from "./CartProvider";
 
 interface ProductCardProps {
+    id?: string;
     name: string;
     price: string;
     image: string;
@@ -8,7 +12,19 @@ interface ProductCardProps {
     category?: string;
 }
 
-export default function ProductCard({ name, price, image, tag, category }: ProductCardProps) {
+export default function ProductCard({ id, name, price, image, tag, category }: ProductCardProps) {
+    const { addToCart } = useCart();
+
+    const handleAddToCart = () => {
+        addToCart({
+            id: id ?? `${name}-${category ?? "produk"}`,
+            name,
+            price,
+            image,
+            category,
+        });
+    };
+
     return (
         <div className="group solid-panel rounded-xl border border-outline-variant shadow-sm overflow-hidden flex flex-col hover:shadow-md transition-all">
             <div className="aspect-square relative overflow-hidden bg-surface-container-low">
@@ -17,7 +33,7 @@ export default function ProductCard({ name, price, image, tag, category }: Produ
                     alt={name}
                     fill
                     sizes="(min-width: 1024px) 25vw, 50vw"
-                    className="object-cover group-hover:scale-110 transition-transform duration-500"
+                    className="object-contain group-hover:scale-110 transition-transform duration-500"
                 />
                 {tag && <div className="absolute top-2 left-2 bg-primary text-[8px] text-on-primary px-2 py-0.5 rounded-full font-label uppercase">{tag}</div>}
             </div>
@@ -25,7 +41,7 @@ export default function ProductCard({ name, price, image, tag, category }: Produ
                 <h3 className="font-body text-body-md text-on-surface truncate font-semibold">{name}</h3>
                 {category && <p className="font-body text-[12px] text-on-surface-variant mb-1">{category}</p>}
                 <p className="font-label text-[12px] text-primary mt-auto">{price}</p>
-                <button className="mt-3 w-full border border-outline-variant text-[10px] py-2 rounded-full font-label uppercase hover:bg-primary hover:text-white transition-colors">Pesan WhatsApp</button>
+                <button onClick={handleAddToCart} className="mt-3 w-full border border-outline-variant text-[10px] py-2 rounded-full font-label uppercase hover:bg-primary hover:text-white transition-colors">Tambah ke Keranjang</button>
             </div>
         </div>
     );

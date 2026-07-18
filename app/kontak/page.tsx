@@ -1,6 +1,45 @@
+"use client";
+
+import { useState } from "react";
+
 export default function Kontak() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [statusMessage, setStatusMessage] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setStatusMessage("");
+
+    const formData = new FormData(e.currentTarget);
+    
+    // GANTI TULISAN DI BAW
+    formData.append("access_key", "1d36068b-0bf9-495d-9086-6994d7b4d9c6");
+    formData.append("subject", "Pesan Baru dari Website jieun.keun");
+
+    try {
+        const response = await fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            body: formData,
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+            setStatusMessage("Pesan berhasil terkirim!");
+            (e.target as HTMLFormElement).reset(); // Kosongkan form setelah sukses
+        } else {
+            setStatusMessage("Gagal mengirim pesan. Silakan coba lagi.");
+        }
+    } catch (error) {
+        setStatusMessage("Terjadi kesalahan pada sistem.");
+    } finally {
+        setIsSubmitting(false);
+    }
+  };
+
   return (
-    <main className="flex-grow max-w-container-max mx-auto px-gutter py-margin-desktop w-full grid grid-cols-1 md:grid-cols-12 gap-margin-desktop bg-background text-on-background font-body-md antialiased">
+   <main className="flex-grow max-w-container-max mx-auto px-gutter pt-4 pb-margin-desktop w-full grid grid-cols-1 md:grid-cols-12 gap-margin-desktop bg-background text-on-background font-body-md antialiased">
       {/* Header Section */}
       <div className="md:col-span-12 text-center mb-margin-desktop">
         <h1 className="font-display-lg text-display-lg-mobile md:text-display-lg text-primary mb-4">Sapa Kami.</h1>
@@ -57,28 +96,40 @@ export default function Kontak() {
       {/* Contact Form & Info */}
       <div className="md:col-span-7 bg-surface-container-lowest/90 backdrop-blur-[10px] rounded-xl p-gutter md:p-margin-desktop shadow-[0_4px_20px_rgba(0,30,43,0.06)] border border-outline-variant border-l-4 border-l-primary">
         <h2 className="font-headline-md text-headline-md text-on-background mb-6">Kirim Pesan</h2>
-        <form action="#" className="space-y-gutter" method="POST">
+        
+        {/* Form sudah diubah menggunakan onSubmit */}
+        <form onSubmit={handleSubmit} className="space-y-gutter">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-gutter">
             <div>
               <label className="block font-label-caps text-label-caps text-on-background mb-2" htmlFor="name">Nama Lengkap</label>
-              <input className="w-full bg-surface-container/30 border border-outline-variant rounded-lg px-4 py-3 font-body-md text-on-background focus:border-primary focus:ring-1 focus:ring-primary transition-colors outline-none placeholder:text-on-surface-variant/50" id="name" name="name" placeholder="Nama Anda" type="text" />
+              <input required className="w-full bg-surface-container/30 border border-outline-variant rounded-lg px-4 py-3 font-body-md text-on-background focus:border-primary focus:ring-1 focus:ring-primary transition-colors outline-none placeholder:text-on-surface-variant/50" id="name" name="name" placeholder="Nama Anda" type="text" />
             </div>
             <div>
               <label className="block font-label-caps text-label-caps text-on-background mb-2" htmlFor="email">Email</label>
-              <input className="w-full bg-surface-container/30 border border-outline-variant rounded-lg px-4 py-3 font-body-md text-on-background focus:border-primary focus:ring-1 focus:ring-primary transition-colors outline-none placeholder:text-on-surface-variant/50" id="email" name="email" placeholder="nama@email.com" type="email" />
+              <input required className="w-full bg-surface-container/30 border border-outline-variant rounded-lg px-4 py-3 font-body-md text-on-background focus:border-primary focus:ring-1 focus:ring-primary transition-colors outline-none placeholder:text-on-surface-variant/50" id="email" name="email" placeholder="nama@email.com" type="email" />
             </div>
           </div>
           <div>
             <label className="block font-label-caps text-label-caps text-on-background mb-2" htmlFor="subject">Subjek</label>
-            <input className="w-full bg-surface-container/30 border border-outline-variant rounded-lg px-4 py-3 font-body-md text-on-background focus:border-primary focus:ring-1 focus:ring-primary transition-colors outline-none placeholder:text-on-surface-variant/50" id="subject" name="subject" placeholder="Tujuan pesan" type="text" />
+            <input required className="w-full bg-surface-container/30 border border-outline-variant rounded-lg px-4 py-3 font-body-md text-on-background focus:border-primary focus:ring-1 focus:ring-primary transition-colors outline-none placeholder:text-on-surface-variant/50" id="subject" name="subject" placeholder="Tujuan pesan" type="text" />
           </div>
           <div>
             <label className="block font-label-caps text-label-caps text-on-background mb-2" htmlFor="message">Pesan</label>
-            <textarea className="w-full bg-surface-container/30 border border-outline-variant rounded-lg px-4 py-3 font-body-md text-on-background focus:border-primary focus:ring-1 focus:ring-primary transition-colors outline-none placeholder:text-on-surface-variant/50 resize-none" id="message" name="message" placeholder="Tuliskan pesan Anda di sini..." rows={5}></textarea>
+            <textarea required className="w-full bg-surface-container/30 border border-outline-variant rounded-lg px-4 py-3 font-body-md text-on-background focus:border-primary focus:ring-1 focus:ring-primary transition-colors outline-none placeholder:text-on-surface-variant/50 resize-none" id="message" name="message" placeholder="Tuliskan pesan Anda di sini..." rows={5}></textarea>
           </div>
-          <button className="bg-primary text-on-primary font-label-caps text-label-caps px-8 py-3 rounded-full hover:opacity-90 transition-opacity mt-4 w-full md:w-auto" type="submit">
-            Kirim Pesan
-          </button>
+          
+          <div className="mt-4">
+            <button disabled={isSubmitting} className="bg-primary text-on-primary font-label-caps text-label-caps px-8 py-3 rounded-full hover:opacity-90 disabled:opacity-50 transition-opacity w-full md:w-auto" type="submit">
+              {isSubmitting ? "Mengirim..." : "Kirim Pesan"}
+            </button>
+            
+            {/* Pesan status keberhasilan/kegagalan */}
+            {statusMessage && (
+                <p className={`text-sm mt-3 font-body-md ${statusMessage.includes("berhasil") ? "text-green-600" : "text-error"}`}>
+                    {statusMessage}
+                </p>
+            )}
+          </div>
         </form>
       </div>
 
@@ -125,24 +176,6 @@ export default function Kontak() {
                 <p>hello@jieunkeun.com</p>
               </div>
             </div>
-          </div>
-        </div>
-
-        {/* Social Media */}
-        <div className="bg-surface-container-lowest/90 backdrop-blur-[10px] rounded-xl p-gutter shadow-[0_4px_20px_rgba(0,30,43,0.06)] border border-outline-variant">
-          <h3 className="font-headline-sm text-headline-sm text-on-background mb-4 flex items-center gap-2">
-            <span className="material-symbols-outlined text-primary">public</span> Temukan Kami
-          </h3>
-          <div className="flex gap-4">
-            <a className="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center text-on-background hover:border-primary hover:text-primary transition-colors" href="#">
-              <span className="material-symbols-outlined">photo_camera</span>
-            </a>
-            <a className="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center text-on-background hover:border-primary hover:text-primary transition-colors" href="#">
-              <span className="material-symbols-outlined">play_arrow</span>
-            </a>
-            <a className="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center text-on-background hover:border-primary hover:text-primary transition-colors" href="#">
-              <span className="material-symbols-outlined">share</span>
-            </a>
           </div>
         </div>
       </div>

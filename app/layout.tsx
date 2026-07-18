@@ -2,9 +2,11 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 // Import komponen yang sudah Anda buat sebelumnya
+import AnnouncementBar from "../components/AnnouncementBar";
 import TopNavBar from "../components/TopNavBar";
 import Footer from "../components/Footer";
 import BottomNav from "../components/BottomNav";
+import { CartProvider } from "../components/CartProvider";
 
 export const metadata: Metadata = {
   title: "jieun.keun - Handcrafted Goods",
@@ -18,12 +20,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="id">
+      <head>
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+      </head>
       <body className="bg-background text-on-background min-h-screen flex flex-col antialiased">
-        <TopNavBar />
-        {/* Konten halaman utama (page) akan di-render di dalam children ini */}
-        {children}
-        <Footer />
-        <BottomNav />
+        <CartProvider>
+          <AnnouncementBar />
+          <TopNavBar />
+          {/* Konten halaman utama (page) akan di-render di dalam children ini */}
+          {children}
+          <Footer />
+          <BottomNav />
+        </CartProvider>
       </body>
     </html>
   );
