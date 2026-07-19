@@ -41,7 +41,21 @@ export default function ProductCard({ id, name, price, image, tag, category }: P
                 <h3 className="font-body text-body-md text-on-surface truncate font-semibold">{name}</h3>
                 {category && <p className="font-body text-[12px] text-on-surface-variant mb-1">{category}</p>}
                 <p className="font-label text-[12px] text-primary mt-auto">{price}</p>
-                <button onClick={handleAddToCart} className="mt-3 w-full border border-outline-variant text-[10px] py-2 rounded-full font-label uppercase hover:bg-primary hover:text-white transition-colors">Tambah ke Keranjang</button>
+                
+                <div className="mt-3 flex gap-2 w-full">
+                    <a
+                        href={`https://wa.me/6285695997686?text=Halo,%20saya%20ingin%20memesan%20produk%20${encodeURIComponent(name)}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 border border-outline-variant text-[10px] py-2 px-1 rounded-full font-label uppercase hover:bg-primary hover:text-white transition-colors flex items-center justify-center text-center leading-tight text-on-surface"
+                    > Checkout
+                    </a>
+                    <button 
+                        onClick={handleAddToCart} 
+                        className="flex-1 rounded-full bg-primary py-2 px-1 flex items-center justify-center text-center font-label text-[10px] uppercase text-on-primary hover:opacity-90 transition-opacity leading-tight"
+                    >Keranjang
+                    </button>
+                </div>
             </div>
         </div>
     );
