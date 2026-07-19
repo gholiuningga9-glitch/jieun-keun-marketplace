@@ -198,7 +198,7 @@ function CartDrawer() {
               </div>
             </div>
 
-            <div className="border-t border-outline-variant bg-surface-container-low p-4">
+            <div className="border-t border-outline-variant bg-surface-container-low p-4 pb-28 md:pb-4">
               <div className="mb-4 flex items-center justify-between">
                 <span className="font-body text-body-md text-on-surface-variant">Subtotal</span>
                 <span className="font-headline text-headline-sm text-on-surface">{formatCurrency(subtotal)}</span>
