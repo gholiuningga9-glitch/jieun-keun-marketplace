@@ -36,7 +36,7 @@ export default async function KatalogPage({ searchParams }: KatalogPageProps) {
 
       <div className="mb-8 flex gap-2 overflow-x-auto hide-scrollbar">
         {categories.map((item) => {
-          // Mengecek apakah kategori tombol ini sama dengan parameter kategori di URL
+  
           const isActive = category?.toLowerCase() === item.name.toLowerCase();
 
           return (
@@ -45,8 +45,8 @@ export default async function KatalogPage({ searchParams }: KatalogPageProps) {
               href={item.href}
               className={`shrink-0 rounded-full border px-4 py-2 font-label text-[10px] uppercase transition-colors ${
                 isActive
-                  ? "border-primary bg-primary text-white" // Warna biru dan teks putih jika aktif
-                  : "border-outline-variant text-on-surface-variant hover:border-primary hover:text-primary" // Warna default jika tidak aktif
+                  ? "border-primary bg-primary text-white" 
+                  : "border-outline-variant text-on-surface-variant hover:border-primary hover:text-primary" 
               }`}
             >
               {item.name}

@@ -16,7 +16,6 @@ export default function Kontak() {
     e.preventDefault();
     setStatus('Mengirim...');
 
-    // Pastikan Anda sudah membuat tabel 'kontak' di Supabase dengan kolom: nama, email, pesan
     const { error } = await supabase
       .from('kontak')
       .insert([{ nama: formData.nama, email: formData.email, pesan: formData.pesan }]);

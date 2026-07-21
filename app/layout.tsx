@@ -27,22 +27,10 @@ export default function RootLayout({
         <CartProvider>
           <AnnouncementBar />
           <TopNavBar />
-          
-          {/* Konten halaman utama (page) akan di-render di dalam children ini */}
           {children}
           
           <Footer />
           <BottomNav />
-
-          {/* Floating WhatsApp Button (Hanya tampil di Mobile) */}
-          <a 
-            href="https://wa.me/6285695997686" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="md:hidden fixed bottom-24 right-6 bg-[#25D366] text-white p-4 rounded-full shadow-lg z-50 flex items-center justify-center hover:scale-110 transition-transform"
-          >
-            <span className="material-symbols-outlined text-3xl">forum</span>
-          </a>
         </CartProvider>
       </body>
     </html>

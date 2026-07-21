@@ -27,7 +27,7 @@ export default function Kontak() {
 
         if (data.success) {
             setStatusMessage("Pesan berhasil terkirim!");
-            (e.target as HTMLFormElement).reset(); // Kosongkan form setelah sukses
+            (e.target as HTMLFormElement).reset(); 
         } else {
             setStatusMessage("Gagal mengirim pesan. Silakan coba lagi.");
         }
@@ -40,17 +40,13 @@ export default function Kontak() {
 
   return (
    <main className="flex-grow max-w-container-max mx-auto px-gutter pt-4 pb-margin-desktop w-full grid grid-cols-1 md:grid-cols-12 gap-margin-desktop bg-background text-on-background font-body-md antialiased">
-      {/* Header Section */}
       <div className="md:col-span-12 text-center mb-margin-desktop">
         <h1 className="font-display-lg text-display-lg-mobile md:text-display-lg text-primary mb-4">Sapa Kami.</h1>
         <p className="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">
           Punya pertanyaan, ide kolaborasi, atau ingin memesan karya kustom? Kami selalu senang mendengar dari Anda. Pilih jalur komunikasi yang paling nyaman di bawah ini.
         </p>
       </div>
-
-      {/* WhatsApp CTAs (Bento Style) */}
       <div className="md:col-span-12 grid grid-cols-1 md:grid-cols-2 gap-gutter mb-margin-desktop">
-        {/* Admin Pembelian CTA */}
         <a 
           className="block bg-surface-container-lowest/90 backdrop-blur-[10px] rounded-xl p-margin-desktop shadow-[0_4px_20px_rgba(0,30,43,0.06)] border border-outline-variant hover:-translate-y-1 transition-transform duration-300 relative overflow-hidden group" 
           href="https://wa.me/6285695997686?text=Halo%20Admin%20jieun.keun,%20saya%20tertarik%20untuk%20melakukan%20pembelian..." 
@@ -70,8 +66,6 @@ export default function Kontak() {
             </div>
           </div>
         </a>
-
-        {/* Kreator CTA */}
         <a 
           className="block bg-surface-container-lowest/90 backdrop-blur-[10px] rounded-xl p-margin-desktop shadow-[0_4px_20px_rgba(0,30,43,0.06)] border border-outline-variant hover:-translate-y-1 transition-transform duration-300 relative overflow-hidden group" 
           href="https://wa.me/6285695997686?text=Halo%20tim%20jieun.keun,%20saya%20seorang%20kreator%20dan%20tertarik%20untuk%20bergabung..." 
@@ -93,11 +87,9 @@ export default function Kontak() {
         </a>
       </div>
 
-      {/* Contact Form & Info */}
       <div className="md:col-span-7 bg-surface-container-lowest/90 backdrop-blur-[10px] rounded-xl p-gutter md:p-margin-desktop shadow-[0_4px_20px_rgba(0,30,43,0.06)] border border-outline-variant border-l-4 border-l-primary">
         <h2 className="font-headline-md text-headline-md text-on-background mb-6">Kirim Pesan</h2>
-        
-        {/* Form sudah diubah menggunakan onSubmit */}
+     
         <form onSubmit={handleSubmit} className="space-y-gutter">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-gutter">
             <div>
@@ -122,8 +114,7 @@ export default function Kontak() {
             <button disabled={isSubmitting} className="bg-primary text-on-primary font-label-caps text-label-caps px-8 py-3 rounded-full hover:opacity-90 disabled:opacity-50 transition-opacity w-full md:w-auto" type="submit">
               {isSubmitting ? "Mengirim..." : "Kirim Pesan"}
             </button>
-            
-            {/* Pesan status keberhasilan/kegagalan */}
+          
             {statusMessage && (
                 <p className={`text-sm mt-3 font-body-md ${statusMessage.includes("berhasil") ? "text-green-600" : "text-error"}`}>
                     {statusMessage}
@@ -133,12 +124,10 @@ export default function Kontak() {
         </form>
       </div>
 
-      {/* Info Sidebar */}
       <div className="md:col-span-5 space-y-gutter">
-        {/* Operational Hours */}
         <div className="bg-surface-container-lowest/90 backdrop-blur-[10px] rounded-xl p-gutter shadow-[0_4px_20px_rgba(0,30,43,0.06)] border border-outline-variant">
           <h3 className="font-headline-sm text-headline-sm text-on-background mb-4 flex items-center gap-2">
-            <span className="material-symbols-outlined text-primary">schedule</span> Jam Operasional
+            <span className="material-symbols-outlined text-primary">Schedule</span> Jam Operasional
           </h3>
           <ul className="space-y-3 font-body-md text-on-surface-variant">
             <li className="flex justify-between border-b border-outline-variant/50 pb-2">
@@ -156,7 +145,6 @@ export default function Kontak() {
           </ul>
         </div>
         
-        {/* Direct Contact */}
         <div className="bg-surface-container-lowest/90 backdrop-blur-[10px] rounded-xl p-gutter shadow-[0_4px_20px_rgba(0,30,43,0.06)] border border-outline-variant">
           <h3 className="font-headline-sm text-headline-sm text-on-background mb-4 flex items-center gap-2">
             <span className="material-symbols-outlined text-primary">mail</span> Informasi Kontak
@@ -173,7 +161,7 @@ export default function Kontak() {
               <span className="material-symbols-outlined text-primary mt-1">alternate_email</span>
               <div>
                 <p className="font-bold text-on-background">Email</p>
-                <p>hello@jieunkeun.com</p>
+                <p>Uningga88@gmail.com</p>
               </div>
             </div>
           </div>

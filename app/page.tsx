@@ -12,7 +12,6 @@
 
         return (
             <div className="animate-in fade-in duration-500">
-                {/* Hero */}
                 <section className="relative -mt-8">
                     <div className="aspect-[4/5] w-full overflow-hidden relative md:aspect-video md:max-h-[600px]">
                         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60 z-10 pointer-events-none"></div>
@@ -36,7 +35,6 @@
                     </div>
                 </section>
 
-                {/* Categories */}
                 <section className="py-section-gap px-margin-mobile bg-surface-container-low max-w-container-max mx-auto">
                     <div className="flex justify-between items-end mb-unit-lg px-gutter">
                         <h2 className="font-headline text-headline-sm text-on-surface">Kategori</h2>
@@ -61,7 +59,6 @@
                     </div>
                 </section>
 
-                {/* Featured */}
                 <section className="py-section-gap px-gutter max-w-container-max mx-auto">
                     <div className="flex justify-between items-center mb-6">
                         <h2 className="font-headline text-headline-sm text-on-surface">Terbaik Minggu Ini</h2>
@@ -82,7 +79,6 @@
                     </div>
                 </section>
 
-                {/* Brand Story Snippet */}
                 <section className="py-section-gap px-margin-mobile bg-surface-container-high relative overflow-hidden">
                     <div className="flex flex-col items-center text-center max-w-2xl mx-auto">
                         <div className="w-32 h-32 rounded-full overflow-hidden border-2 border-primary mb-6">

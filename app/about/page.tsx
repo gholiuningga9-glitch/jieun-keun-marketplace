@@ -5,8 +5,7 @@ import { motion } from 'framer-motion';
 export default function About() {
   return (
     <main className="bg-background text-on-background font-body-md antialiased min-h-screen flex flex-col flex-grow">
-      
-      {/* Section 1: Hero */}
+  
       <motion.section 
         initial={{ opacity: 0, y: 50 }} 
         whileInView={{ opacity: 1, y: 0 }} 
@@ -26,7 +25,6 @@ export default function About() {
         </div>
       </motion.section>
 
-      {/* Section 2: Nilai-Nilai */}
       <motion.section 
         initial={{ opacity: 0, y: 50 }} 
         whileInView={{ opacity: 1, y: 0 }} 
@@ -65,7 +63,6 @@ export default function About() {
         </div>
       </motion.section>
 
-      {/* Section 3: Proses Kreatif */}
       <motion.section 
         initial={{ opacity: 0, y: 50 }} 
         whileInView={{ opacity: 1, y: 0 }} 
@@ -105,7 +102,6 @@ export default function About() {
         </div>
       </motion.section>
 
-      {/* Section 4: Quote */}
       <motion.section 
         initial={{ opacity: 0, y: 50 }} 
         whileInView={{ opacity: 1, y: 0 }} 
